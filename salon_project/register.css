@@ -1,0 +1,43 @@
+        /* -------------------------------------- */
+        /* 1. Animation & Layout */
+        /* -------------------------------------- */
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+
+        .signup-container {
+            background-color: #ffffff; padding: 40px; border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); width: 100%; max-width: 450px;
+            text-align: center; opacity: 0; animation: fadeInSlideUp 1s ease-out forwards;
+        }
+
+        .signup-logo { font-size: 32px; font-weight: bold; color: #cc6699; margin-bottom: 20px; letter-spacing: 1px; }
+
+        /* -------------------------------------- */
+        /* 2. Form Styling */
+        /* -------------------------------------- */
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; color: #555; font-size: 14px; }
+        .form-group input { 
+            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; 
+            box-sizing: border-box; transition: border-color 0.3s; 
+        }
+        .form-group input:focus { border-color: #cc6699; outline: none; }
+
+        .signup-btn {
+            width: 100%; padding: 12px; background-color: #4CAF50; /* Green for Sign Up */
+            color: white; border: none; border-radius: 8px; font-size: 18px; 
+            font-weight: bold; cursor: pointer; transition: background-color 0.3s; 
+            margin-top: 20px;
+        }
+        .signup-btn:hover { background-color: #45a049; }
+
+        .links { margin-top: 15px; font-size: 14px; }
+        .links a { color: #cc6699; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }

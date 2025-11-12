@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chanu Salon</title>
+    <link rel="stylesheet" type="text/css" href="home.css"/>
+</head>
+<body>
+
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">Chanu Salon</div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        
+        <header class="header">
+            <div class="logo">Chanu Salon</div>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#info-preview">About Us</a>
+                <a href="#info-preview">Contact Us</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../log.php" class="login">Login</a>
+                <a class="login" href="../register.php">Sign Up</a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>Your Beauty Journey Starts Here</h1>
+            <p style="font-size: 18px; margin-bottom: 30px;">Book a convenient time slot today. No queues, no delays!</p>
+            <a href="#" class="book-btn" onclick="alert('First you log in..')" >Book Now</a>
+        </section>
+
+        <section class="services-preview" id="services">
+            <h2>Our Popular Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <h3>Hair Cutting</h3>
+                    <p>Style your hair according to the latest trends.</p>
+                    <p style="color: #cc6699; font-weight: bold;">Starting from Rs. 1,500</p>
+                </div>
+                <div class="card">
+                    <h3>Facial Treatments</h3>
+                    <p>High-quality face care that gives your skin comfort and glow.</p>
+                    <p style="color: #cc6699; font-weight: bold;">Starting from Rs. 3,000</p>
+                </div>
+                <div class="card">
+                    <h3>Hair Coloring</h3>
+                    <p>Choose colors that highlight your personality and get a professional coloring service.</p>
+                    <p style="color: #cc6699; font-weight: bold;">Starting from Rs. 5,000</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-preview" id="info-preview">
+            <div class="info-cards">
+                <div class="info-card about">
+                    <h3>About Chanu Salon</h3>
+                    <p>We are the leading beauty salon in Kuliyapitiya, dedicated to providing high-quality treatments and exceptional customer service.</p>
+                    <a href="#" class="info-link">Learn More &rarr;</a>
+                </div>
+                <div class="info-card contact" >
+                    <h3>Contact Us</h3>
+                    <p>Book your appointment or inquire about our services via phone or email. We are here to help you!</p>
+                    <a href="#" class="info-link">Get in Touch &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 Chanu Salon. All Rights Reserved. | Kuliyapitiya.</p>
+            <p class="tech-info">Project developed using WAMP Server, MySQL, and Note Pad++.</p>
+        </footer>
+
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splashScreen');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Animation එක සඳහා කාලය (තත්පර 2ක්) සහ මාරු වීමට තවත් තත්පර 0.5ක් ලබා දීම
+            const duration = 2500; // 2.5 seconds (Animation + pause)
+
+            setTimeout(() => {
+                // 1. Splash Screen එක සැඟවීම (Fade Out)
+                splashScreen.style.opacity = '0'; 
+
+                // 2. Splash Screen එක සම්පූර්ණයෙන්ම ඉවත් කර Main Content එක දර්ශනය කිරීම
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    mainContent.style.opacity = '1'; 
+                }, 500); // CSS transition කාලය (0.5s)
+                
+            }, duration);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+       /* -------------------------------------- */
+        /* 1. Animation Keyframes */
+        /* -------------------------------------- */
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* -------------------------------------- */
+        /* 2. Basic Styling & Layout */
+        /* -------------------------------------- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Login Card Container */
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            opacity: 0; /* Animation සඳහා මුලින් සැඟවීම */
+            animation: fadeInSlideUp 1s ease-out forwards;
+        }
+
+        /* Logo/Header */
+        .login-logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #cc6699; /* Salon Accent Color */
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* -------------------------------------- */
+        /* 3. Form Styling */
+        /* -------------------------------------- */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box; /* Padding එක width එකට ඇතුළත් කිරීම */
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #cc6699;
+            outline: none;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #cc6699;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: #a34778;
+        }
+
+        /* Links */
+        .links {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #cc6699;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Separator Line */
+        .separator {
+            border-top: 1px solid #eee;
+            margin: 25px 0 15px 0;
+        }

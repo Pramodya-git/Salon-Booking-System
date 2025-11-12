@@ -1,0 +1,304 @@
+/* -------------------------------------- */
+/* 1. Animation සහ Splash Screen ඉවත් කර ඇත */
+/* -------------------------------------- */
+
+/* Main Content එක ක්ෂණිකව දර්ශනය කිරීම */
+.main-content {
+    opacity: 1; /* Always visible */
+}
+        
+/* -------------------------------------- */
+/* 2. Page Styling */
+/* -------------------------------------- */
+        
+body { font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        
+/* Header/Navigation */
+.header { 
+    background-color: #fff; 
+    padding: 15px 5%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.logo { font-size: 24px; font-weight: bold; color: #cc6699; }
+.nav a { color: #333; text-decoration: none; margin: 0 15px; font-size: 16px; }
+        
+/* Auth Buttons */
+.auth-buttons a, .auth-buttons button { 
+    padding: 8px 15px; 
+    margin-left: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    text-decoration: none;
+    display: inline-block;
+}
+.auth-buttons .login-user { background-color: #cc6699; color: white;padding:9px;border-radius:10px; }
+.auth-buttons .signup { background-color: #eee; color: #333; border: 1px solid #ccc; }
+        
+/* Hero Section */
+.hero { 
+    background: url('https://via.placeholder.com/1500x500?text=Chanu+Salon+Banner') no-repeat center center/cover; 
+    color: white; 
+    text-align: center; 
+    padding: 150px 20px; 
+    min-height: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+}
+.hero::before { 
+    content: ""; 
+    position: absolute; 
+    top: 0; left: 0; right: 0; bottom: 0; 
+    background: rgba(0, 0, 0, 0.4); 
+}
+.hero * { position: relative; z-index: 10; }
+.hero h1 { font-size: 48px; margin-bottom: 20px; }
+.book-btn { 
+    background-color: #cc6699; 
+    color: white; 
+    padding: 15px 30px; 
+    font-size: 20px; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    transition: background-color 0.3s; 
+}
+.book-btn:hover { background-color: #a34778; }
+
+/* Services Preview */
+.services-preview { padding: 50px 5%; text-align: center; }
+.services-preview h2 { font-size: 32px; color: #cc6699; margin-bottom: 40px; }
+
+/* තිරස් ස්වයිප් කිරීම සඳහා Container එක */
+.service-cards { 
+    display: flex; 
+    flex-wrap: nowrap; 
+    gap: 30px; 
+    overflow-x: auto; 
+    padding-bottom: 20px; 
+    -webkit-overflow-scrolling: touch; 
+}
+/* Scrollbar සඟවයි */
+.service-cards::-webkit-scrollbar {
+    display: none; 
+}
+.service-cards {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+/* 🏆 Service Card Styling - Positioning වෙනස් කරන ලදි 🏆 */
+.card { 
+    background-color: white; 
+    border-radius: 12px; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
+    flex: 0 0 320px; 
+    min-width: 320px; 
+    margin: 0; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    overflow: hidden; 
+    text-align: left;
+    padding: 0;
+    position: relative; /* ⭐️ වැදගත්: Overlay එක සඳහා relative සකස් කරන ලදි */
+}
+.card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+        
+/* 🖼️ රූපය රඳවා තබා ගන්නා කොටස */
+.card-image-section {
+    height: 350px; /* ⭐️ Card එකේ සම්පූර්ණ උස සකස් කරන ලදි */
+    overflow: hidden;
+    position: relative; /* Image Overlay සඳහා */
+}
+
+/* රූපය (<img> ටැගය) සඳහා CSS */
+.card-image-section .card-image {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* රූපය Card එකට හරියටම ගැලපෙන්න resize කරයි */
+    display: block;
+}
+
+/* 📝 Card Content Overlay Styling */
+.card-content {
+    /* ⭐️ Overlay එකක් ලෙස රූපය මතට ගෙන ඒම */
+    position: absolute; 
+    bottom: 0; /* පහළින් පෙන්වීමට */
+    left: 0;
+    right: 0;
+    z-index: 10;
+    
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.0)); /* පසුබිම් රූපයට අඳුරු gradient එකක් එක් කරයි */
+    color: white; /* අකුරු සුදු කරයි */
+    text-align: left;
+}
+.card-content h3 { 
+    color: white; /* සුදු පැහැය තබා ගනී */
+    margin-top: 0; 
+    font-size: 24px; /* විශාල අකුරු */
+    margin-bottom: 5px;
+}
+.card-content p {
+    color: #ccc; /* විස්තරය සඳහා තරමක් අළු පැහැයක් */
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.card-content .price {
+    color: #ffccff; /* රෝස පැහැයෙන් මිල ඉස්මතු කරයි */
+    font-weight: bold; 
+    margin-top: 10px; 
+    display: block;
+    font-size: 16px;
+}
+
+/* Info Preview (About Us & Contact Us) */
+.info-preview { padding: 50px 5%; text-align: center; background-color: #ffffff; }
+.info-cards { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.info-card { 
+    background-color: #fcfcfc; 
+    border-radius: 12px; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+    padding: 30px; 
+    width: 40%; 
+    min-width: 300px; 
+    text-align: left; 
+    border-left: 5px solid #cc6699; 
+}
+.info-card h3 { color: #cc6699; margin-top: 0; }
+.info-link { display: inline-block; margin-top: 15px; color: #cc6699; text-decoration: none; font-weight: bold; }
+
+/* Footer */
+.footer { background-color: #333; color: #ccc; padding: 20px 5%; text-align: center; font-size: 14px; }
+.footer p { margin: 5px 0; }
+.tech-info { font-size: 10px; color: #666; margin-top: 10px; }
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .header { flex-direction: column; padding: 15px 20px; }
+    .nav { margin-top: 10px; margin-bottom: 10px; }
+    .nav a { display: block; margin: 5px 0; }
+    .hero h1 { font-size: 32px; }
+    
+    .card { width: 90%; }
+    .info-cards { flex-direction: column; align-items: center; gap: 20px; }
+    .info-card { width: 90%; }
+}
+/* -------------------------------------- */
+/* 3. Booking Form Section Styling */
+/* -------------------------------------- */
+
+/* ප්‍රධාන Booking Section Container එක */
+.booking-section {
+    flex: 1; 
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    position: sticky; 
+    top: 100px;
+}
+
+/* Booking Section එකේ මාතෘකාව (Book Your Appointment) */
+.booking-section h2 { 
+    font-size: 28px; 
+    color: #cc6699; 
+    margin-bottom: 20px;
+    border-bottom: 3px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+/* Form Group (Label සහ Input/Select එකක්) */
+.form-group { 
+    margin-bottom: 15px; 
+}
+.form-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+    color: #555; 
+    font-size: 14px; 
+}
+
+/* Input (Date) සහ Select (Service) ක්ෂේත්‍ර */
+.form-group select, .form-group input {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+    box-sizing: border-box; 
+    transition: border-color 0.3s; 
+}
+.form-group select:focus, .form-group input:focus { 
+    border-color: #cc6699; 
+    outline: none; 
+}
+
+/* Time Slot Buttons Container */
+.time-slots-container {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 8px; 
+    margin-top: 8px;
+}
+
+/* Radio Input එක සැඟවීම */
+.time-slot-input { 
+    display: none; 
+}
+
+/* Time Slot Button Label එක */
+.time-slot-label {
+    padding: 8px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s; 
+    text-align: center;
+    font-size: 14px;
+}
+.time-slot-label:hover { 
+    background-color: #f0f0f0; 
+}
+
+/* තෝරාගත් Time Slot Button එක */
+.time-slot-input:checked + .time-slot-label {
+    background-color: #cc6699; 
+    color: white; 
+    border-color: #a34778;
+}
+
+/* Submit Button එක */
+.submit-btn {
+    width: 100%; 
+    padding: 12px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+    border-radius: 8px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    margin-top: 20px;
+}
+.submit-btn:hover { 
+    background-color: #45a049; 
+}
+
+/* Responsiveness (1024px ට අඩු තිර සඳහා) */
+@media (max-width: 1024px) {
+    .booking-section { 
+        flex: none; 
+        width: 100%; 
+        position: static; 
+    } 
+}
